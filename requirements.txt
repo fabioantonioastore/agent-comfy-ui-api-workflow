@@ -1,0 +1,6 @@
+comfy-ui-api-workflow==0.0.9
+langchain==1.4.7
+langchain-anthropic==1.7.6
+langgraph==1.2.16
+httpx==0.28.1
+pillow==13.0.0

@@ -1,0 +1,53 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agent-comfy-ui-api-workflow"
+dynamic = ["version"]
+description = "Async LangChain agent on Claude that builds, edits and validates ComfyUI API workflows."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+    { name = "Fabio Antonio Astore", email = "astore.a.fabio@gmail.com" },
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "comfy-ui-api-workflow==0.0.9",
+    "langchain==1.4.7",
+    "langchain-anthropic==1.7.6",
+    "langgraph==1.2.16",
+    "httpx==0.28.1",
+    "pillow==13.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=1.4.0",
+    "pytest-cov>=7.1",
+    "build>=1.2",
+]
+
+[tool.hatch.version]
+path = "src/agent_comfy_ui_api_workflow/__about__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agent_comfy_ui_api_workflow"]
+
+# only-include keeps the src/ path, so the wheel built from the sdist finds the package.
+[tool.hatch.build.targets.sdist]
+only-include = ["src/agent_comfy_ui_api_workflow", "tests"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+markers = [
+    "runpod: sends real jobs to the RunPod ComfyUI endpoint in .env; needs --runpod",
+    "anthropic: calls the Claude API with ANTHROPIC_API_KEY; needs --anthropic",
+]
