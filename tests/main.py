@@ -13,7 +13,7 @@ TURNS = (
 
 async def main() -> None:
     agent = WorkflowAgent(ServerInventory.load(OUTPUT / "inventory.json"))
-    await agent.send("Create a video of an astronaut with my face walking in the moon", files={"image": b'01'})
+    await agent.send("Create a video of an astronaut walking in the moon")
     print(agent.view())
     path = OUTPUT / "astronaut_elephant.json"
     path.write_text(json.dumps(agent.workflow, indent=2), encoding="utf-8")

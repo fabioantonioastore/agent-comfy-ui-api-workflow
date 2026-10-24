@@ -1,11 +1,11 @@
 from langchain_anthropic import ChatAnthropic
 
-DEFAULT_MODEL = "claude-opus-5-5"
-DEFAULT_EFFORT = "high"
+DEFAULT_MODEL = "claude-haiku-5-5"
+DEFAULT_EFFORT = "low"
 # The API re-runs a declined request on another model; only these models accept it.
 _FALLBACK_BETA = "server-side-fallback-2026-07-01"
 _FALLBACK_MODELS = frozenset(
-    {"claude-fable-5-1", "claude-opus-5-5", "claude-opus-5", "claude-sonnet-5-5"}
+    {"claude-haiku-5-5"}
 )
 
 
